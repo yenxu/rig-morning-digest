@@ -2,12 +2,12 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { DigestRow, ReadNight, RunStatus } from './types.js';
 
-type Line = { at: string; job: string; status: RunStatus; owner: string | null; error?: string };
+export type Line = { at: string; job: string; status: RunStatus; owner: string | null; error?: string };
 
 const STATUSES: readonly string[] = ['ok', 'retry', 'fail'];
 
 // The log is written by many jobs and can be cut mid-line; validate here so nothing downstream re-checks.
-function parseLine(text: string): Line | null {
+export function parseLine(text: string): Line | null {
   let value: unknown;
   try {
     value = JSON.parse(text);
