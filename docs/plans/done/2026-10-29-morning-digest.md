@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-10-30
 ---
 
 # Morning digest
@@ -77,3 +78,19 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Worker | Closed |
+|---|-------|-----------|--------|--------|
+| 1 | Digest types: DigestRow and readNight signature | — | claude-ai · claude-opus-5-5 · low | 2026-10-30 |
+| 2 | Run log reader | #1 | claude-ai · claude-opus-5-5 · low | 2026-10-30 |
+| 3 | Digest page: GET /digest/:night | #1 | claude-ai subagent · claude-sonnet-5-5 · default | 2026-10-30 |
+| 4 | Digest JSON: GET /api/digest/:night | #1 | claude-ai subagent · claude-haiku-5-5 · default | 2026-10-30 |
+| 5 | Board link with ok / retry / fail counts | #1 | claude-ai subagent · claude-sonnet-5-5 · default | 2026-10-30 |
+| 6 | Route tests for the digest page and JSON | #1 | claude-ai subagent · claude-haiku-5-5 · default | 2026-10-30 |
+| 7 | Preview for review | #2, #3 | claude-ai · claude-opus-5-5 · low | 2026-10-30 |
+| 8 | Clean up: marker off the preview, plan to done | #7 | claude-ai · claude-opus-5-5 · low | 2026-10-30 |
+
+#7 was closed once before the reviewer looked and reopened; it closed again after the review.
+Page and JSON share one `nightFor()` in `src/app.tsx`; board counts reuse `parseLine` from the reader.
