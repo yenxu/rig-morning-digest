@@ -56,7 +56,7 @@ LANE_MARKER= PORT=8791 pnpm start &         # banner reads "no marker set"
 curl -sf localhost:8791/digest/<night> -o <upload-folder>/index.html; kill %1
 netlify deploy --prod --dir <upload-folder>
 netlify api listSiteDeploys --data '{"site_id":"<site id>"}'   # find the old deploy id
-netlify api deleteDeploy --data '{"deploy_id":"<old id>"}'
+netlify api deleteSiteDeploy --data '{"site_id":"<site id>","deploy_id":"<old id>"}'   # deleteDeploy gives 405
 ```
 
 Done when the site link and the old deploy link no longer show the marker.
